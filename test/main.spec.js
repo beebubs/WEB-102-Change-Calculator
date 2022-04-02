@@ -4,9 +4,17 @@ const Nightmare = require('nightmare');
 const expect = require('chai').expect;
 const axios = require('axios');
 
-const app = express();
-app.use(express.static(path.join(__dirname, '../')));
-app.listen(8888);
+// const app = express();
+// app.use(express.static(path.join(__dirname, '../')));
+// app.listen(8888);
+
+// var express = require('express'),
+//   http = require('http');
+var bodyParser  = require('body-parser');
+var app = express()
+  .use(bodyParser.urlencoded())
+  .use(express.static(__dirname + '/public'))
+  .use('/node_modules',  express.static(__dirname + '/node_modules'));
 
 const url = 'http://localhost:8888/public/index.html';
 
